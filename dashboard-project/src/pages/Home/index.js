@@ -5,6 +5,7 @@ import React from 'react';
 import Graphic from '../../components/Graphic';
 
 const Home = () => {
+    // TODO this structure is just for test and will be refactored soon
     return (
         <div style={{backgroundColor: '#36394c', height: '100vh'}}>
             <div style={{width: 100}}>
