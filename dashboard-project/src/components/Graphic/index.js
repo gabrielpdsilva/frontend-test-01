@@ -8,8 +8,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {RootDiv, Title} from './styles';
 
 const options = [
-    'Edit',
-    'Delete',
+    'Editar',
+    'Deletar',
 ];
 
 const ITEM_HEIGHT = 48;
@@ -31,35 +31,35 @@ const Graphic = (props) => {
 
     function renderMoreIcon() {
         return (
-        <div>
-            <IconButton
-                aria-label="more"
-                aria-controls="long-menu"
-                aria-haspopup="true"
-                onClick={handleClick}
-            >
-                <MoreVertIcon/>
-            </IconButton>
-            <Menu
-                id="long-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                    style: {
-                        maxHeight: ITEM_HEIGHT * 4.5,
-                        width: '20ch',
-                    },
-                }}
-            >
-                {options.map((option) => (
-                <MenuItem key={option} selected={option === 'Edit'} onClick={() => handleClose(option)}>
-                    {option}
-                </MenuItem>
-                ))}
-            </Menu>
-        </div>
+            <div>
+                <IconButton
+                    aria-label="more"
+                    aria-controls="long-menu"
+                    aria-haspopup="true"
+                    onClick={handleClick}
+                >
+                    <MoreVertIcon/>
+                </IconButton>
+                <Menu
+                    id="long-menu"
+                    anchorEl={anchorEl}
+                    keepMounted
+                    open={open}
+                    onClose={handleClose}
+                    PaperProps={{
+                        style: {
+                            maxHeight: ITEM_HEIGHT * 4.5,
+                            width: '20ch',
+                        },
+                    }}
+                >
+                    {options.map((option) => (
+                    <MenuItem key={option} selected={option === 'Editar'} onClick={() => handleClose(option)}>
+                        {option}
+                    </MenuItem>
+                    ))}
+                </Menu>
+            </div>
         )
     }
 
