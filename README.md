@@ -52,3 +52,11 @@ Não será passado prazo para entrega, verifique os pré-requisitos e nos dê se
 - Tenho mais dúvidas, com quem posso entrar em contato?
 
 **Entre em contato com André Oliveira (andre.oliveira@delfosim.com)**
+
+## TODO
+
+- [x] Implement add graphic
+- [ ] Implement edit graphic
+- [ ] Implement delete graphic
+- [ ] Fix style problems
+- [ ] Create basic layout for 404 page
