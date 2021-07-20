@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import Graphic from '../../components/Graphic';
-
-import {RootDiv} from './styles';
+import {RootDiv, NoGraphicsText} from './styles';
 import SearchAppBar from '../../components/SearchAppBar';
-import TransitionsModal from '../../components/TransitionsModal';
 import TextField from '@material-ui/core/TextField';
-import { Button, Fab, Input } from '@material-ui/core';
+import { Button, Fab } from '@material-ui/core';
 import plusIcon from '../../design/assets/plusIcon.png';
 
 const Home = () => {
@@ -52,6 +50,8 @@ const Home = () => {
     return (
         <RootDiv>
             <SearchAppBar/>
+            {isFormVisible && renderAddForm()}
+            { graphics.length == 0 && <NoGraphicsText>Nenhum gráfico foi adicionado.</NoGraphicsText> }
             {
                 graphics.map((graphic, index) => {
                     return (
@@ -59,7 +59,6 @@ const Home = () => {
                     )
                 })
             }
-            {isFormVisible && renderAddForm()}
             {!isFormVisible && renderFabIcon()}
         </RootDiv>
     )
