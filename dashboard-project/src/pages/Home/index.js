@@ -4,15 +4,15 @@ import Graphic from '../../components/Graphic';
 import {RootDiv} from './styles';
 import SearchAppBar from '../../components/SearchAppBar';
 import TransitionsModal from '../../components/TransitionsModal';
+import TextField from '@material-ui/core/TextField';
+import { Button, Fab, Input } from '@material-ui/core';
+import plusIcon from '../../design/assets/plusIcon.png';
 
 const Home = () => {
     const [graphicTitle, setGraphicTitle] = useState('');
     const [graphicValues, setGraphicValues] = useState([]);
-    // TODO remove hardcoded values
-    const [graphics, setGraphics] = useState([
-        {title: 'A', values: [3, 2, 5]},
-        {title: 'B', values: [10, 5, 6]},
-    ]);
+    const [isFormVisible, setFormVisible] = useState(false);
+    const [graphics, setGraphics] = useState([]);
 
     function addGraphic(title, values) {
         const newGraphic = {
@@ -21,7 +21,34 @@ const Home = () => {
         };
         setGraphics([...graphics, newGraphic]);
     }
-    // TODO this structure is just for test and will be refactored soon
+
+    function renderFabIcon() {
+        return (
+            <Fab color="primary" aria-label="add" onClick={() => setFormVisible(true)}>
+                <img src={plusIcon} width={30} height={30}/>
+            </Fab>
+        )
+    }
+
+    function renderAddForm() {
+        return (
+            <div>
+                <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
+                <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
+                    const inputValues = event.target.value;
+                    const numericValues = inputValues.split`,`.map(value => +value);
+                    setGraphicValues(numericValues);
+                }}/>
+                <Button variant="contained" color="primary" onClick={() => {
+                    addGraphic(graphicTitle, graphicValues);
+                    setFormVisible(false);
+                }}>
+                    <p>Salvar</p>
+                </Button>
+            </div>
+        )
+    }
+
     return (
         <RootDiv>
             <SearchAppBar/>
@@ -32,15 +59,8 @@ const Home = () => {
                     )
                 })
             }
-            <button onClick={() => addGraphic(graphicTitle, graphicValues)}>
-                <p>Salvar</p>
-            </button>
-            <TransitionsModal
-                title={"Novo gráfico"}
-                description={"Digite os dados do novo gráfico."}
-                setGraphicTitle={setGraphicTitle}
-                setGraphicValues={setGraphicValues}
-            />
+            {isFormVisible && renderAddForm()}
+            {!isFormVisible && renderFabIcon()}
         </RootDiv>
     )
 }
