@@ -59,4 +59,4 @@ Não será passado prazo para entrega, verifique os pré-requisitos e nos dê se
 - [ ] Implement edit graphic
 - [ ] Implement delete graphic
 - [ ] Fix style problems
-- [ ] Create basic layout for 404 page
+- [x] Create basic layout for 404 page
