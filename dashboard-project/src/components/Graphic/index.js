@@ -54,9 +54,9 @@ const Graphic = (props) => {
                     }}
                 >
                     {options.map((option) => (
-                    <MenuItem key={option} selected={option === 'Editar'} onClick={() => handleClose(option)}>
-                        {option}
-                    </MenuItem>
+                        <MenuItem key={option} selected={option === 'Editar'} onClick={() => handleClose(option)}>
+                            {option}
+                        </MenuItem>
                     ))}
                 </Menu>
             </div>
@@ -66,8 +66,8 @@ const Graphic = (props) => {
     return (
         <RootDiv>
             <div style={{flexDirection: 'row', display: 'flex', justifyContent: 'space-between'}}>
-            <Title>{props.title}</Title>
-            {renderMoreIcon()}
+                <Title>{props.title}</Title>
+                {renderMoreIcon()}
             </div>
             <HighchartsReact
                 highcharts={Highcharts}
