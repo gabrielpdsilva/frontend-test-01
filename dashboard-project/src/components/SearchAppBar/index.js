@@ -71,14 +71,14 @@ export default function SearchAppBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography className={classes.title} variant="h6" noWrap>
-            Dashboard
+            <b>Dashboard</b>
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Buscar..."
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
