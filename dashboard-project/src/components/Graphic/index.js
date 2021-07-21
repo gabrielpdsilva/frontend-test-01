@@ -25,8 +25,12 @@ const Graphic = (props) => {
 
     const handleClose = (option) => {
         setAnchorEl(null);
-        // TODO remove
-        console.log(option);
+        // TODO add EDIT case
+        switch(option) {
+            case "Deletar":
+                props.handleDelete();
+                break;
+        }
     };
 
     function renderMoreIcon() {

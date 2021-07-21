@@ -20,6 +20,15 @@ const Home = () => {
         setGraphics([...graphics, newGraphic]);
     }
 
+    function deleteGraphic(graphicIndex) {
+        setGraphics(graphics.filter((grafic, index) => index !== graphicIndex));
+    }
+
+    // TODO implement
+    function updateGraphic() {
+
+    }
+
     function renderFabIcon() {
         return (
             <Fab color="primary" aria-label="add" onClick={() => setFormVisible(true)}>
@@ -55,7 +64,12 @@ const Home = () => {
             {
                 graphics.map((graphic, index) => {
                     return (
-                        <Graphic key={index} title={graphic.title} data={graphic.values}/>
+                        <Graphic
+                            handleDelete={() => deleteGraphic(index)}
+                            key={index}
+                            title={graphic.title}
+                            data={graphic.values}
+                        />
                     )
                 })
             }
