@@ -9,8 +9,10 @@ import plusIcon from '../../design/assets/plusIcon.png';
 const Home = () => {
     const [graphicTitle, setGraphicTitle] = useState('');
     const [graphicValues, setGraphicValues] = useState([]);
-    const [isFormVisible, setFormVisible] = useState(false);
+    const [isAddFormVisible, setAddFormVisible] = useState(false);
+    const [isEditFormVisible, setEditFormVisible] = useState(false);
     const [graphics, setGraphics] = useState([]);
+    const [graphicIndex, setGraphicIndex] = useState(0);
 
     function addGraphic(title, values) {
         const newGraphic = {
@@ -24,14 +26,15 @@ const Home = () => {
         setGraphics(graphics.filter((grafic, index) => index !== graphicIndex));
     }
 
-    // TODO implement
-    function updateGraphic() {
-
+    function updateGraphic(updatedGraphic, index) {
+       const updatedGraphics = [...graphics];
+       updatedGraphics[index] = updatedGraphic;
+       setGraphics(updatedGraphics);   
     }
 
     function renderFabIcon() {
         return (
-            <Fab color="primary" aria-label="add" onClick={() => setFormVisible(true)}>
+            <Fab color="primary" aria-label="add" onClick={() => setAddFormVisible(true)}>
                 <img src={plusIcon} width={30} height={30}/>
             </Fab>
         )
@@ -48,7 +51,7 @@ const Home = () => {
                 }}/>
                 <Button variant="contained" color="primary" onClick={() => {
                     addGraphic(graphicTitle, graphicValues);
-                    setFormVisible(false);
+                    setAddFormVisible(false);
                 }}>
                     <p>Salvar</p>
                 </Button>
@@ -56,24 +59,27 @@ const Home = () => {
         )
     }
 
+   
+
     return (
         <RootDiv>
             <SearchAppBar/>
-            {isFormVisible && renderAddForm()}
+            {isAddFormVisible && renderAddForm()}
             { graphics.length == 0 && <NoGraphicsText>Nenhum gráfico foi adicionado.</NoGraphicsText> }
             {
                 graphics.map((graphic, index) => {
                     return (
                         <Graphic
-                            handleDelete={() => deleteGraphic(index)}
                             key={index}
                             title={graphic.title}
                             data={graphic.values}
+                            handleDelete={() => deleteGraphic(index)}
+                            handleUpdate={() => setEditFormVisible(true)}
                         />
                     )
                 })
             }
-            {!isFormVisible && renderFabIcon()}
+            {!isAddFormVisible && renderFabIcon()}
         </RootDiv>
     )
 }

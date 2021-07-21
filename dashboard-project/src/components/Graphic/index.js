@@ -25,10 +25,12 @@ const Graphic = (props) => {
 
     const handleClose = (option) => {
         setAnchorEl(null);
-        // TODO add EDIT case
         switch(option) {
             case "Deletar":
                 props.handleDelete();
+                break;
+            case "Editar":
+                props.handleUpdate();
                 break;
         }
     };

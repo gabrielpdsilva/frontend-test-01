@@ -56,7 +56,7 @@ Não será passado prazo para entrega, verifique os pré-requisitos e nos dê se
 ## TODO
 
 - [x] Implement add graphic
-- [ ] Implement edit graphic
-- [ ] Implement delete graphic
+- [x] Implement edit graphic
+- [x] Implement delete graphic
 - [ ] Fix style problems
 - [x] Create basic layout for 404 page
