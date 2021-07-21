@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: 10,
         paddingBottom: 10,
         borderRadius: 10,
+        marginBottom: 15,
     },
     titleText: {
         fontSize: 30,
@@ -117,7 +118,6 @@ const Graphic = (props) => {
                     }}
                 />
             </div>
-            
         </div>
     )
 }
