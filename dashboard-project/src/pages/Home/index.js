@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
         color: COLORS.white,
         textAlign: 'center',
     },
-    addFormContainer: {
+    formContainer: {
         margin: 30,
         padding: 30,
         display: 'flex',
@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     },
     graphicsContainer: {
         margin: 50,
+    },
+    formText: {
+        color: COLORS.gray,
     }
 }));
 
@@ -87,10 +90,10 @@ const Home = () => {
         )
     }
 
-    // TODO create better layout
     function renderAddForm() {
         return (
-            <div class={classes.addFormContainer}>
+            <div class={classes.formContainer}>
+                <p class={classes.formText}>Digite o título e os valores pro novo gráfico</p>
                 <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
                 <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
                     const inputValues = event.target.value;
@@ -111,10 +114,10 @@ const Home = () => {
         )
     }
 
-    // TODO create better layout
     function renderEditForm() {
         return (
-            <div>
+            <div class={classes.formContainer}>
+                <p class={classes.formText}>Digite os novos valores do gráfico {graphicIndex}</p>
                 <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
                 <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
                     const inputValues = event.target.value;
