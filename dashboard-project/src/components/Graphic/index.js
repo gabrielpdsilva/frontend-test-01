@@ -5,7 +5,35 @@ import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import {RootDiv, Title} from './styles';
+import { makeStyles } from '@material-ui/core/styles';
+import COLORS from '../../design/colors';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        backgroundColor: COLORS.gray,
+        paddingLeft: 10,
+        paddingRight: 10,
+        paddingBottom: 10,
+        borderRadius: 10,
+    },
+    titleText: {
+        fontSize: 30,
+        color: COLORS.white,
+    },
+    titleAndOptionsContainer: {
+        flexDirection: 'row',
+        display: 'flex',
+        justifyContent: 'space-between',
+        marginLeft: 15,
+        marginRight: 15,
+        alignItems: 'center',
+    },
+    graphicContainer: {
+        marginLeft: 15,
+        marginRight: 15,
+        marginBottom: 15,
+    }
+}));
 
 const options = [
     'Editar',
@@ -15,6 +43,7 @@ const options = [
 const ITEM_HEIGHT = 48;
 
 const Graphic = (props) => {
+    const classes = useStyles();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -70,23 +99,26 @@ const Graphic = (props) => {
     }
 
     return (
-        <RootDiv>
-            <div style={{flexDirection: 'row', display: 'flex', justifyContent: 'space-between'}}>
-                <Title>{props.title}</Title>
+        <div class={classes.root}>
+            <div class={classes.titleAndOptionsContainer}>
+                <h1 className={classes.titleText}>{props.title}</h1>
                 {renderMoreIcon()}
             </div>
-            <HighchartsReact
-                highcharts={Highcharts}
-                options={{
-                    title: {
-                        text: props.title
-                    },
-                    series: [{
-                        data: props.data
-                    }]
-                }}
-            />
-        </RootDiv>
+            <div class={classes.graphicContainer}>
+                <HighchartsReact
+                    highcharts={Highcharts}
+                    options={{
+                        title: {
+                            text: props.title
+                        },
+                        series: [{
+                            data: props.data
+                        }]
+                    }}
+                />
+            </div>
+            
+        </div>
     )
 }
 

@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     graphicsContainer: {
         margin: 50,
     }
-  }));
+}));
 
 const Home = () => {
     const classes = useStyles();
