@@ -98,7 +98,10 @@ const Home = () => {
                             title={graphic.title}
                             data={graphic.values}
                             handleDelete={() => deleteGraphic(index)}
-                            handleUpdate={() => setEditFormVisible(true)}
+                            handleUpdate={() => {
+                                setEditFormVisible(true);
+                                setGraphicIndex(index);
+                            }}
                         />
                     )
                 })
