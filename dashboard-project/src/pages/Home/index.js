@@ -40,6 +40,7 @@ const Home = () => {
         )
     }
 
+    // TODO create better layout
     function renderAddForm() {
         return (
             <div>
@@ -59,12 +60,35 @@ const Home = () => {
         )
     }
 
-   
+    // TODO create better layout
+    function renderEditForm() {
+        return (
+            <div>
+                <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
+                <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
+                    const inputValues = event.target.value;
+                    const numericValues = inputValues.split`,`.map(value => +value);
+                    setGraphicValues(numericValues);
+                }}/>
+                <Button variant="contained" color="primary" onClick={() => {
+                    const updatedGraphic = {
+                        title: graphicTitle,
+                        values: graphicValues
+                    }
+                    updateGraphic(updatedGraphic, graphicIndex);
+                    setEditFormVisible(false);
+                }}>
+                    <p>Editar</p>
+                </Button>
+            </div>
+        )
+    }
 
     return (
         <RootDiv>
             <SearchAppBar/>
             {isAddFormVisible && renderAddForm()}
+            {isEditFormVisible && renderEditForm()}
             { graphics.length == 0 && <NoGraphicsText>Nenhum gráfico foi adicionado.</NoGraphicsText> }
             {
                 graphics.map((graphic, index) => {
