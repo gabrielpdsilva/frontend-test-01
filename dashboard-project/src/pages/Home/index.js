@@ -36,6 +36,17 @@ const useStyles = makeStyles((theme) => ({
         color: COLORS.white,
         textAlign: 'center',
     },
+    addFormContainer: {
+        margin: 30,
+        padding: 30,
+        display: 'flex',
+        backgroundColor: COLORS.light_gray,
+        flexDirection: 'column',
+        borderRadius: 5,
+    },
+    graphicsContainer: {
+        margin: 50,
+    }
   }));
 
 const Home = () => {
@@ -79,7 +90,7 @@ const Home = () => {
     // TODO create better layout
     function renderAddForm() {
         return (
-            <div>
+            <div class={classes.addFormContainer}>
                 <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
                 <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
                     const inputValues = event.target.value;
@@ -134,22 +145,24 @@ const Home = () => {
             {isAddFormVisible && renderAddForm()}
             {isEditFormVisible && renderEditForm()}
             { graphics.length == 0 && <p className={classes.noGraphicsText}>Nenhum gráfico foi adicionado.</p> }
-            {
-                graphics.map((graphic, index) => {
-                    return (
-                        <Graphic
-                            key={index}
-                            title={graphic.title}
-                            data={graphic.values}
-                            handleDelete={() => deleteGraphic(index)}
-                            handleUpdate={() => {
-                                setEditFormVisible(true);
-                                setGraphicIndex(index);
-                            }}
-                        />
-                    )
-                })
-            }
+            <div className={classes.graphicsContainer}>
+                {
+                    graphics.map((graphic, index) => {
+                        return (
+                            <Graphic
+                                key={index}
+                                title={graphic.title}
+                                data={graphic.values}
+                                handleDelete={() => deleteGraphic(index)}
+                                handleUpdate={() => {
+                                    setEditFormVisible(true);
+                                    setGraphicIndex(index);
+                                }}
+                            />
+                        )
+                    })
+                }
+            </div>
             {!isAddFormVisible && renderFabIcon()}
         </div>
     )

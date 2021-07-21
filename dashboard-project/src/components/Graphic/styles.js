@@ -6,7 +6,7 @@ export const Title = styled.h1`
 `;
 
 export const RootDiv = styled.div`
-    background-color: ${COLORS.light_gray};
+    background-color: ${COLORS.gray};
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
