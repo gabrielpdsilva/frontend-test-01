@@ -51,6 +51,10 @@ const Home = () => {
                     setGraphicValues(numericValues);
                 }}/>
                 <Button variant="contained" color="primary" onClick={() => {
+                    if(graphicTitle.length == 0 || graphicValues.length == 0) {
+                        alert("Tanto título quanto os valores são obrigatórios.");
+                        return;
+                    }
                     addGraphic(graphicTitle, graphicValues);
                     setAddFormVisible(false);
                 }}>
