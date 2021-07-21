@@ -9,9 +9,20 @@ export const RootDiv = styled.div`
 `;
 
 export const NoGraphicsText = styled.div`
-    margin: 30px;
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 20px;
     color: ${COLORS.white};
+    text-align: center;
+`;
+
+export const WelcomeText = styled.p`
+    color: ${COLORS.soft_yellow};
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+`;
+
+export const InformationText = styled.p`
+    color: ${COLORS.white};
+    font-size: 20px;
     text-align: center;
 `;

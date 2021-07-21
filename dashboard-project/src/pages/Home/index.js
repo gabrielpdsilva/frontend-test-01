@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Graphic from '../../components/Graphic';
-import {RootDiv, NoGraphicsText} from './styles';
+import {RootDiv, NoGraphicsText, WelcomeText, InformationText} from './styles';
 import SearchAppBar from '../../components/SearchAppBar';
 import TextField from '@material-ui/core/TextField';
 import { Button, Fab } from '@material-ui/core';
@@ -91,6 +91,10 @@ const Home = () => {
     return (
         <RootDiv>
             <SearchAppBar/>
+            <div>
+                <WelcomeText>Bem-vindo ao Dashboard!</WelcomeText>
+                <InformationText>Você já pode adicionar, editar e remover quantos gráficos desejar.</InformationText>
+            </div>
             {isAddFormVisible && renderAddForm()}
             {isEditFormVisible && renderEditForm()}
             { graphics.length == 0 && <NoGraphicsText>Nenhum gráfico foi adicionado.</NoGraphicsText> }
