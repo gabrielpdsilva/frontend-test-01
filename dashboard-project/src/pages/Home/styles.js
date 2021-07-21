@@ -3,6 +3,8 @@ import COLORS from '../../design/colors';
 
 export const RootDiv = styled.div`
     height: 100vh;
+    overflow: auto;
+    max-height: 100vh;
     background-color: ${COLORS.dark_gray};
 `;
 
