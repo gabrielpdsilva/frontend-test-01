@@ -140,6 +140,19 @@ const Home = () => {
         )
     }
 
+    function handleEdit() {
+        if(graphicTitle.length == 0 || graphicValues.length == 0) {
+            alert("Tanto título quanto os valores são obrigatórios.");
+            return;
+        }
+        const updatedGraphic = {
+            title: graphicTitle,
+            values: graphicValues
+        }
+        updateGraphic(updatedGraphic, graphicIndex);
+        setEditFormVisible(false);
+    }
+
     function renderEditForm() {
         return (
             <div class={classes.formContainer}>
@@ -150,16 +163,12 @@ const Home = () => {
                     const numericValues = inputValues.split`,`.map(value => +value);
                     setGraphicValues(numericValues);
                 }}/>
-                <Button variant="contained" color="primary" onClick={() => {
-                    const updatedGraphic = {
-                        title: graphicTitle,
-                        values: graphicValues
-                    }
-                    updateGraphic(updatedGraphic, graphicIndex);
-                    setEditFormVisible(false);
-                }}>
+                <Button variant="contained" color="primary" onClick={handleEdit}>
                     <p>Editar</p>
                 </Button>
+                <Button variant="contained" color="secondary" onClick={() => setEditFormVisible(false)}>
+                        <p>Cancelar</p>
+                    </Button>
             </div>
         )
     }
