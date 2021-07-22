@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         overflow: 'auto',
         height: '100vh',
         maxHeight: '100vh',
-        backgroundColor: COLORS.dark_gray,
+        backgroundColor: COLORS.white,
     },
     fabContainer: {
         alignSelf: 'flex-end',
@@ -22,18 +22,18 @@ const useStyles = makeStyles((theme) => ({
     },
     welcomeText: {
         fontSize: 50,
-        color: COLORS.soft_yellow,
+        color: COLORS.dark_gray2,
         fontWeight: 'bold',
         textAlign: 'center',
     },
     informationText: {
         fontSize: 20,
-        color: COLORS.white,
+        color: COLORS.dark_gray2,
         textAlign: 'center',
     },
     noGraphicsText: {
         fontSize: 20,
-        color: COLORS.white,
+        color: COLORS.gray,
         textAlign: 'center',
     },
     formContainer: {
