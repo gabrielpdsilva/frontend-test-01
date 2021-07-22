@@ -6,6 +6,9 @@ import { Button, Fab } from '@material-ui/core';
 import plusIcon from '../../design/assets/plusIcon.png';
 import { makeStyles } from '@material-ui/core/styles';
 import COLORS from '../../design/colors';
+import { store } from '../../redux/store';
+import { addGraphic } from '../../redux/actionType';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -68,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
     const classes = useStyles();
+    const reduxGraphics = useSelector(state => state.graphicState.graphics);
 
     const [graphicTitle, setGraphicTitle] = useState('');
     const [graphicValues, setGraphicValues] = useState([]);
@@ -75,14 +79,6 @@ const Home = () => {
     const [isEditFormVisible, setEditFormVisible] = useState(false);
     const [graphics, setGraphics] = useState([]);
     const [graphicIndex, setGraphicIndex] = useState(0);
-
-    function addGraphic(title, values) {
-        const newGraphic = {
-            title: title,
-            values: values
-        };
-        setGraphics([...graphics, newGraphic]);
-    }
 
     function deleteGraphic(graphicIndex) {
         if(!window.confirm("Tem certeza de que deseja remover esse gráfico?")) return;
@@ -113,7 +109,11 @@ const Home = () => {
             alert("Tanto título quanto os valores são obrigatórios.");
             return;
         }
-        addGraphic(graphicTitle, graphicValues);
+        const newGraphic = {
+            title: graphicTitle,
+            values: graphicValues
+        };
+        store.dispatch(addGraphic(newGraphic));
         resetCurrentState();
         setAddFormVisible(false);
     }
@@ -194,7 +194,7 @@ const Home = () => {
             {isEditFormVisible && renderEditForm()}
             <div className={classes.graphicsContainer}>
                 {
-                    graphics.map((graphic, index) => {
+                    reduxGraphics.map((graphic, index) => {
                         return (
                             <Graphic
                                 key={index}
