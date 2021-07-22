@@ -1,0 +1,3 @@
+export const ADD_GRAPHIC = 'ADD_GRAPHIC';
+export const EDIT_GRAPHIC = 'EDIT_GRAPHIC';
+export const DELETE_GRAPHIC = 'DELETE_GRAPHIC';
