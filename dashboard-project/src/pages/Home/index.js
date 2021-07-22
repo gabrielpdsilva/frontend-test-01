@@ -35,10 +35,13 @@ const useStyles = makeStyles((theme) => ({
         minWidth: 300,
         marginLeft: 300,
         marginRight: 300,
+        marginBottom: 15,
         justifyContent: 'center',
         alignSelf: 'center',
         alignContent: 'center',
-        padding: 25,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingBottom: 20,
         display: 'flex',
         backgroundColor: COLORS.light_gray,
         flexDirection: 'column',
@@ -48,15 +51,19 @@ const useStyles = makeStyles((theme) => ({
     graphicsContainer: {
         margin: 50,
     },
-    formText: {
+    formDescriptionText: {
         color: COLORS.gray,
     },
     buttonContainer: {
         marginTop: 25,
         justifyContent: 'flex-end',
         alignSelf: 'flex-end',
-
-    }
+    },
+    formTitleText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: COLORS.dark_gray2,
+    },
 }));
 
 const Home = () => {
@@ -114,8 +121,9 @@ const Home = () => {
 
     function renderAddForm() {
         return (
-            <div class={classes.formContainer}>
-                <p class={classes.formText}>Digite o título e os valores pro novo gráfico</p>
+            <div className={classes.formContainer}>
+                <p className={classes.formTitleText}>Registrar Gráfico</p>
+                <p className={classes.formDescriptionText}>Digite o título e os valores pro novo gráfico</p>
                 <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
                 <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
                     const inputValues = event.target.value;
@@ -150,19 +158,22 @@ const Home = () => {
     function renderEditForm() {
         return (
             <div class={classes.formContainer}>
-                <p class={classes.formText}>Digite os novos valores do gráfico {graphicIndex}</p>
+                <p class={classes.formTitleText}>Editar Gráfico</p>
+                <p class={classes.formDescriptionText}>Digite os novos valores do gráfico {graphicIndex}</p>
                 <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
                 <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
                     const inputValues = event.target.value;
                     const numericValues = inputValues.split`,`.map(value => +value);
                     setGraphicValues(numericValues);
                 }}/>
-                <Button variant="contained" color="primary" onClick={handleEdit}>
-                    <p>Editar</p>
-                </Button>
-                <Button variant="contained" color="secondary" onClick={() => setEditFormVisible(false)}>
+                <div className={classes.buttonContainer}>
+                    <Button variant="contained" color="primary" onClick={handleEdit}>
+                        <p>Editar</p>
+                    </Button>
+                    <Button variant="contained" color="secondary" onClick={() => setEditFormVisible(false)}>
                         <p>Cancelar</p>
-                </Button>
+                    </Button>
+                </div>
             </div>
         )
     }

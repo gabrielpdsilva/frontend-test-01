@@ -3,7 +3,7 @@ const COLORS = {
     dark_gray: '#252734',
     dark_gray2: '#2a2a33',
     gray: '#36394c',
-    light_gray: '#dadce6',
+    light_gray: '#e3e3e3',
     white: '#ffffff',
     soft_yellow: '#f5e569',
     black: '#000000',
