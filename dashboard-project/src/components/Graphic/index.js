@@ -10,16 +10,17 @@ import COLORS from '../../design/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        backgroundColor: COLORS.gray,
+        backgroundColor: COLORS.light_gray,
         paddingLeft: 10,
         paddingRight: 10,
         paddingBottom: 10,
         borderRadius: 10,
         marginBottom: 15,
+        boxShadow: "1px 3px 1px #9E9E9E",
     },
     titleText: {
         fontSize: 30,
-        color: COLORS.white,
+        color: COLORS.dark_gray2,
     },
     titleAndOptionsContainer: {
         flexDirection: 'row',
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 15,
         marginRight: 15,
         marginBottom: 15,
+        
     }
 }));
 

@@ -37,18 +37,31 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
     },
     formContainer: {
-        margin: 30,
-        padding: 30,
+        minWidth: 300,
+        marginLeft: 300,
+        marginRight: 300,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        alignContent: 'center',
+        padding: 25,
         display: 'flex',
         backgroundColor: COLORS.light_gray,
         flexDirection: 'column',
         borderRadius: 5,
+        boxShadow: "1px 3px 1px #9E9E9E",
+        
     },
     graphicsContainer: {
         margin: 50,
     },
     formText: {
         color: COLORS.gray,
+    },
+    buttonContainer: {
+        marginTop: 25,
+        justifyContent: 'flex-end',
+        alignSelf: 'flex-end',
+
     }
 }));
 
@@ -100,16 +113,21 @@ const Home = () => {
                     const numericValues = inputValues.split`,`.map(value => +value);
                     setGraphicValues(numericValues);
                 }}/>
-                <Button variant="contained" color="primary" onClick={() => {
-                    if(graphicTitle.length == 0 || graphicValues.length == 0) {
-                        alert("Tanto título quanto os valores são obrigatórios.");
-                        return;
-                    }
-                    addGraphic(graphicTitle, graphicValues);
-                    setAddFormVisible(false);
-                }}>
-                    <p>Salvar</p>
-                </Button>
+                <div className={classes.buttonContainer}>
+                    <Button variant="contained" color="primary" onClick={() => {
+                        if(graphicTitle.length == 0 || graphicValues.length == 0) {
+                            alert("Tanto título quanto os valores são obrigatórios.");
+                            return;
+                        }
+                        addGraphic(graphicTitle, graphicValues);
+                        setAddFormVisible(false);
+                    }}>
+                        <p>Salvar</p>
+                    </Button>
+                    <Button variant="contained" color="secondary" onClick={() => setAddFormVisible(false)}>
+                        <p>Cancelar</p>
+                    </Button>
+                </div>
             </div>
         )
     }
