@@ -7,7 +7,7 @@ import plusIcon from '../../design/assets/plusIcon.png';
 import { makeStyles } from '@material-ui/core/styles';
 import COLORS from '../../design/colors';
 import { store } from '../../redux/store';
-import { addGraphic } from '../../redux/actionType';
+import { addGraphic, deleteGraphic, editGraphic } from '../../redux/actionType';
 import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
@@ -82,13 +82,10 @@ const Home = () => {
 
     function deleteGraphic(graphicIndex) {
         if(!window.confirm("Tem certeza de que deseja remover esse gráfico?")) return;
+        
+        // TODO not working yet
+        store.dispatch(deleteGraphic(graphicIndex));
         setGraphics(graphics.filter((grafic, index) => index !== graphicIndex));
-    }
-
-    function updateGraphic(updatedGraphic, index) {
-       const updatedGraphics = [...graphics];
-       updatedGraphics[index] = updatedGraphic;
-       setGraphics(updatedGraphics);   
     }
 
     function renderFabIcon() {
@@ -156,15 +153,15 @@ const Home = () => {
             title: graphicTitle,
             values: graphicValues
         }
-        updateGraphic(updatedGraphic, graphicIndex);
+        store.dispatch(editGraphic(updatedGraphic, graphicIndex));
         setEditFormVisible(false);
     }
 
     function renderEditForm() {
         return (
-            <div class={classes.formContainer}>
-                <p class={classes.formTitleText}>Editar Gráfico</p>
-                <p class={classes.formDescriptionText}>Digite os novos valores do gráfico {graphicIndex}</p>
+            <div className={classes.formContainer}>
+                <p className={classes.formTitleText}>Editar Gráfico</p>
+                <p className={classes.formDescriptionText}>Digite os novos valores do gráfico {graphicIndex}</p>
                 <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
                 <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
                     const inputValues = event.target.value;
