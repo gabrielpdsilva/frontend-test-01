@@ -168,7 +168,7 @@ const Home = () => {
                 </Button>
                 <Button variant="contained" color="secondary" onClick={() => setEditFormVisible(false)}>
                         <p>Cancelar</p>
-                    </Button>
+                </Button>
             </div>
         )
     }
