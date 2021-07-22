@@ -74,23 +74,6 @@ export default function SearchAppBar(props) {
           <Typography className={classes.title} variant="h6" noWrap>
             <b>Dashboard</b>
           </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              onChange={props.onChange}
-              placeholder="Buscar..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-            <Button style={{margin: 5}} variant="contained" color="primary" onClick={props.onClick}>
-              Confirmar
-            </Button>
-          </div>
         </Toolbar>
       </AppBar>
     </div>

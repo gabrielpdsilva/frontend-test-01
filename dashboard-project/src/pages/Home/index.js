@@ -77,7 +77,6 @@ const Home = () => {
     const [graphicValues, setGraphicValues] = useState([]);
     const [isAddFormVisible, setAddFormVisible] = useState(false);
     const [isEditFormVisible, setEditFormVisible] = useState(false);
-    const [graphics, setGraphics] = useState([]);
     const [graphicIndex, setGraphicIndex] = useState(0);
 
     function handleDelete(graphicIndex) {
