@@ -85,6 +85,7 @@ const Home = () => {
     }
 
     function deleteGraphic(graphicIndex) {
+        if(!window.confirm("Tem certeza de que deseja remover esse gráfico?")) return;
         setGraphics(graphics.filter((grafic, index) => index !== graphicIndex));
     }
 
