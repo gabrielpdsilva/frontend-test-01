@@ -58,5 +58,6 @@ Não será passado prazo para entrega, verifique os pré-requisitos e nos dê se
 - [x] Implement add graphic
 - [x] Implement edit graphic
 - [x] Implement delete graphic
-- [ ] Fix style problems
+- [x] Fix style problems
 - [x] Create basic layout for 404 page
+- [ ] Try to implement Redux
