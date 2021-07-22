@@ -7,6 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar(props) {
   const classes = useStyles();
 
   return (
@@ -78,6 +79,7 @@ export default function SearchAppBar() {
               <SearchIcon />
             </div>
             <InputBase
+              onChange={props.onChange}
               placeholder="Buscar..."
               classes={{
                 root: classes.inputRoot,
@@ -85,6 +87,9 @@ export default function SearchAppBar() {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
+            <Button style={{margin: 5}} variant="contained" color="primary" onClick={props.onClick}>
+              Confirmar
+            </Button>
           </div>
         </Toolbar>
       </AppBar>
