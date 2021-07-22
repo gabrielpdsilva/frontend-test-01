@@ -80,12 +80,9 @@ const Home = () => {
     const [graphics, setGraphics] = useState([]);
     const [graphicIndex, setGraphicIndex] = useState(0);
 
-    function deleteGraphic(graphicIndex) {
+    function handleDelete(graphicIndex) {
         if(!window.confirm("Tem certeza de que deseja remover esse gráfico?")) return;
-        
-        // TODO not working yet
         store.dispatch(deleteGraphic(graphicIndex));
-        setGraphics(graphics.filter((grafic, index) => index !== graphicIndex));
     }
 
     function renderFabIcon() {
@@ -197,7 +194,7 @@ const Home = () => {
                                 key={index}
                                 title={graphic.title}
                                 data={graphic.values}
-                                handleDelete={() => deleteGraphic(index)}
+                                handleDelete={() => handleDelete(index)}
                                 handleUpdate={() => {
                                     if(isAddFormVisible) setAddFormVisible(false);
                                     setEditFormVisible(true);
