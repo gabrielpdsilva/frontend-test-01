@@ -103,6 +103,21 @@ const Home = () => {
         )
     }
 
+    function handleSave() {
+        if(graphicTitle.length == 0 || graphicValues.length == 0) {
+            alert("Tanto título quanto os valores são obrigatórios.");
+            return;
+        }
+        addGraphic(graphicTitle, graphicValues);
+        resetCurrentState();
+        setAddFormVisible(false);
+    }
+
+    function resetCurrentState() {
+        setGraphicTitle('');
+        setGraphicValues([]);
+    }
+
     function renderAddForm() {
         return (
             <div class={classes.formContainer}>
@@ -114,14 +129,7 @@ const Home = () => {
                     setGraphicValues(numericValues);
                 }}/>
                 <div className={classes.buttonContainer}>
-                    <Button variant="contained" color="primary" onClick={() => {
-                        if(graphicTitle.length == 0 || graphicValues.length == 0) {
-                            alert("Tanto título quanto os valores são obrigatórios.");
-                            return;
-                        }
-                        addGraphic(graphicTitle, graphicValues);
-                        setAddFormVisible(false);
-                    }}>
+                    <Button variant="contained" color="primary" onClick={handleSave}>
                         <p>Salvar</p>
                     </Button>
                     <Button variant="contained" color="secondary" onClick={() => setAddFormVisible(false)}>
