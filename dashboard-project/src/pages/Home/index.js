@@ -97,7 +97,10 @@ const Home = () => {
     function renderFabIcon() {
         return (
             <div className={classes.fabContainer}>
-                <Fab color="primary" aria-label="add" onClick={() => setAddFormVisible(true)}>
+                <Fab color="primary" aria-label="add" onClick={() => {
+                    if(isEditFormVisible) setEditFormVisible(false);
+                    setAddFormVisible(true)}
+                }>
                     <img src={plusIcon} width={30} height={30}/>
                 </Fab>
             </div>
@@ -122,7 +125,7 @@ const Home = () => {
     function renderAddForm() {
         return (
             <div className={classes.formContainer}>
-                <p className={classes.formTitleText}>Registrar Gráfico</p>
+                <p className={classes.formTitleText}>Adicionar Gráfico</p>
                 <p className={classes.formDescriptionText}>Digite o título e os valores pro novo gráfico</p>
                 <TextField required id="standard-required" label="Título" defaultValue="" onChange={(event) => setGraphicTitle(event.target.value)}/>
                 <TextField required id="standard-required" label="Valores" defaultValue="" onChange={(event) => {
@@ -132,7 +135,7 @@ const Home = () => {
                 }}/>
                 <div className={classes.buttonContainer}>
                     <Button variant="contained" color="primary" onClick={handleSave}>
-                        <p>Salvar</p>
+                        <p>Adicionar Gráfico</p>
                     </Button>
                     <Button variant="contained" color="secondary" onClick={() => setAddFormVisible(false)}>
                         <p>Cancelar</p>
@@ -143,6 +146,7 @@ const Home = () => {
     }
 
     function handleEdit() {
+        if(isAddFormVisible) setAddFormVisible(false);
         if(graphicTitle.length == 0 || graphicValues.length == 0) {
             alert("Tanto título quanto os valores são obrigatórios.");
             return;
@@ -168,7 +172,7 @@ const Home = () => {
                 }}/>
                 <div className={classes.buttonContainer}>
                     <Button variant="contained" color="primary" onClick={handleEdit}>
-                        <p>Editar</p>
+                        <p>Editar Gráfico</p>
                     </Button>
                     <Button variant="contained" color="secondary" onClick={() => setEditFormVisible(false)}>
                         <p>Cancelar</p>
@@ -197,6 +201,7 @@ const Home = () => {
                                 data={graphic.values}
                                 handleDelete={() => deleteGraphic(index)}
                                 handleUpdate={() => {
+                                    if(isAddFormVisible) setAddFormVisible(false);
                                     setEditFormVisible(true);
                                     setGraphicIndex(index);
                                 }}
