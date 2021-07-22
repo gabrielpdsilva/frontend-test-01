@@ -31,11 +31,6 @@ const useStyles = makeStyles((theme) => ({
         color: COLORS.dark_gray2,
         textAlign: 'center',
     },
-    noGraphicsText: {
-        fontSize: 20,
-        color: COLORS.gray,
-        textAlign: 'center',
-    },
     formContainer: {
         minWidth: 300,
         marginLeft: 300,
@@ -49,7 +44,6 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         borderRadius: 5,
         boxShadow: "1px 3px 1px #9E9E9E",
-        
     },
     graphicsContainer: {
         margin: 50,
@@ -182,7 +176,6 @@ const Home = () => {
             </div>
             {isAddFormVisible && renderAddForm()}
             {isEditFormVisible && renderEditForm()}
-            { graphics.length == 0 && <p className={classes.noGraphicsText}>Nenhum gráfico foi adicionado.</p> }
             <div className={classes.graphicsContainer}>
                 {
                     graphics.map((graphic, index) => {
